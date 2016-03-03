@@ -1,7 +1,9 @@
 "Close other buf
 "Use commad ":Bdo" or key "bdo"
 
-command! BcloseOthers call <SID>BufCloseOthers()
+command! Bdo call <SID>BufCloseOthers()
+map bdo :Bdo<CR>
+
 function! <SID>BufCloseOthers()
     let l:currentBufNum   = bufnr("%")
     let l:alternateBufNum = bufnr("#")
@@ -13,5 +15,3 @@ function! <SID>BufCloseOthers()
         endif
     endfor
 endfunction
-map <leader>bdo :BcloseOthers<cr>
-command! Bdo call <SID>BufCloseOthers()
