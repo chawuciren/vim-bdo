@@ -1,10 +1,9 @@
 "Close other buf
-"Use commad ":Bdo" or key "bdo"
 
-command! Bdo call <SID>BufCloseOthers()
-map bdo :Bdo<CR>
+command! Bdo call <SID>BdoCloseOthers()
+command! -nargs=1 Bd call <SID>BdoCloseBuffer(<f-args>)
 
-function! <SID>BufCloseOthers()
+function! <SID>BdoCloseOthers()
     let l:currentBufNum   = bufnr("%")
     let l:alternateBufNum = bufnr("#")
     for i in range(1,bufnr("$"))
@@ -14,4 +13,18 @@ function! <SID>BufCloseOthers()
             endif
         endif
     endfor
+endfunction
+
+function! <SID>BdoCloseBuffer(num)
+    let l:currentBufNum   = bufnr("%")
+    let l:lastBufNum = bufnr("#")
+
+    if buflisted(a:num)
+        if a:num==l:currentBufNum
+            execute("b".l:lastBufNum)
+        else
+        endif
+
+        execute("bdelete ".i)
+    endif
 endfunction
