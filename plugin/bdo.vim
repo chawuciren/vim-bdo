@@ -1,9 +1,9 @@
 "Close other buf
 
-command! Bdo call <SID>BdoCloseOthers()
-command! -nargs=1 Bd call <SID>BdoCloseBuffer(<f-args>)
+command! Bdo call BdoCloseOthers()
+command! -nargs=1 Bd call BdoCloseBuffer(<f-args>)
 
-function! <SID>BdoCloseOthers()
+function! BdoCloseOthers()
     let l:currentBufNum   = bufnr("%")
     let l:alternateBufNum = bufnr("#")
     for i in range(1,bufnr("$"))
@@ -15,16 +15,16 @@ function! <SID>BdoCloseOthers()
     endfor
 endfunction
 
-function! <SID>BdoCloseBuffer(num)
-    let l:currentBufNum   = bufnr("%")
-    let l:lastBufNum = bufnr("#")
+function! BdoCloseBuffer(num)
+    let l:currentBufNum = bufnr("%")
+    let l:preBufNum = bufnr("#")
 
-    if buflisted(a:num)
-        if a:num==l:currentBufNum
-            execute("b".l:lastBufNum)
-        else
-        endif
-
+    if l:preBufNum==-1&&a:num==l:currentBufNum
+        echo "Can not close current buffer!"
+    elseif a:num==l:currentBufNum
+        execute("b".l:preBufNum)
+        execute("bdelete ".i)
+    else
         execute("bdelete ".i)
     endif
 endfunction
