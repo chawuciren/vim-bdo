@@ -1,4 +1,4 @@
-"Close other buf
+"关闭其他标签
 
 command! Bp call BdoOpenPrevBuffer()
 command! Bn call BdoOpenNextBuffer()
