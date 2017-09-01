@@ -22,9 +22,9 @@
     "删除当前行"
     let yvt.keymap["DelCurrentLine"] = {"key": "<C-j>d", "nmap": "dd", "imap": "<Esc>lddi"}
     "在行尾补全句号并另起一行
-    let yvt.keymap["EndLineDown"] = {"key": "<C-j>n", "nmap": "$a;<CR><Esc>", "imap": "<Esc>$a;<CR>"}
+    let yvt.keymap["EndLineDown"] = {"key": "<C-j>c;", "nmap": "$a;<CR><Esc>", "imap": "<Esc>$a;<CR>"}
     "在行尾补全花括号并另起一行
-    let yvt.keymap["EndLineBlockDown"] = {"key": "<C-j>m", "nmap": "$a {<CR><Esc>", "imap": "<Esc>l$a {<CR>"}
+    let yvt.keymap["EndLineBlockDown"] = {"key": "<C-j>c{", "nmap": "$a {<CR><Esc>", "imap": "<Esc>l$a {<CR>"}
     "增加空行"
     let yvt.keymap["NewEmptyLine"] = {"key": "<C-j>l", "nmap": "o<Esc>", "imap": "<Esc>lo<Esc>"}
     "删除当前单词
